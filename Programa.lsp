@@ -1,10 +1,21 @@
+(defstruct Endereco
+    id
+    cep
+    rua)
+
 (defstruct Pessoa
     nome
-    documento)
+    documento
+    endId)
 
 (setq pessoa_list (list ))
-(push (make-Pessoa :nome "Hercules Moreira" :documento "02101848686") pessoa_list)
-(push (make-Pessoa :nome "Christopher José" :documento "01802346868") pessoa_list)
+(setq endereco_list (list ))
+
+(push (make-Endereco :id 1 :cep "38550-156" :rua "Rua Ficticia em Paracatu") endereco_list)
+(push (make-Pessoa :nome "Hercules Moreira" :documento "02101848686" :endId 1) pessoa_list)
+
+(push (make-Endereco :id 2 :cep "38755-000" :rua "Rua Pedro Alvares Cabral") endereco_list)
+(push (make-Pessoa :nome "Christopher José" :documento "01802346868" :endId 2) pessoa_list)
 
 (defun cls () (ext:run-shell-command "clear") )
 (cls)
@@ -15,7 +26,18 @@
     (setq nome-lido (read))
     (format t "Documento: ")
     (setq documento-lido (read))
-    (setq p (make-Pessoa :nome (write-to-string nome-lido) :documento (write-to-string documento-lido)))
+    
+    (format t "Rua: ")
+    (setq rua-lido (read))
+    (format t "Cep: ")
+    (setq cep-lido (read))
+
+    (setq idEnd (+ (list-length endereco_list) 1))
+
+    (setq e (make-Endereco :id idEnd :rua (write-to-string rua-lido) :cep (write-to-string cep-lido)))
+    (push e endereco_list)
+
+    (setq p (make-Pessoa :nome (write-to-string nome-lido) :documento (write-to-string documento-lido) :endId idEnd))
     (return-from ler_pessoa p)
 )
 
@@ -25,8 +47,7 @@
     (setq p (ler_pessoa))
     (push p pessoa_list)
     (write-line "")
-    (write-line "")
-    
+    (write-line "")    
 )
 
 (defun listar_pessoas ()
