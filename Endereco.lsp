@@ -10,8 +10,10 @@
     id
     cep
     rua)
+(setq endereco_list (list ))
 
 (defun ler_endereco(&optional indice)
+
     (format t "Rua: ")
     (setq rua-lido (read))
 

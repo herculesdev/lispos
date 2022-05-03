@@ -4,6 +4,8 @@
     nome
     documento
     endId)
+(setq pessoa_list (list ))
+
 
 (defun ler_pessoa(&optional indice)
     (format t "Nome: ")
@@ -25,7 +27,7 @@
     (write-line "======[Sistema OS | CAD. PESSOA]======")    
     (setq p (ler_pessoa))
     (push p pessoa_list)
-    (setq e (ler_endereco 42))
+    (setq e (ler_endereco))
     (push e endereco_list)
     (write-line "")
     (write-line "")    
@@ -103,7 +105,7 @@
 
     (setq pessoa_lida (ler_pessoa (Pessoa-endId pessoa)))
     (setq endereco_lido (ler_endereco (Pessoa-endId pessoa)))
-    
+
     (write pessoa_lida)
     (setf (nth pessoa_id endereco_list) endereco_lido)
     (setf (nth pessoa_id pessoa_list) pessoa_lida)
@@ -153,7 +155,7 @@
     (when (/= editar 0)
         (write-line "Saindo...")
         (write-line "")
-        (return-from editar_pessoa 0)
+        (return-from apagar_pessoa 0)
     )
 
     (setq pessoa_list (delete pessoa pessoa_list))

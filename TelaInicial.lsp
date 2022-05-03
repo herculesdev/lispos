@@ -2,14 +2,14 @@
 
 
 
-(setq pessoa_list (list ))
-(setq endereco_list (list ))
 
 (push (make-Endereco :id 0 :cep "38550-156" :rua "Rua Ficticia em Paracatu") endereco_list)
 (push (make-Pessoa :nome "Hercules Moreira" :documento "02101848686" :endId 0) pessoa_list)
 
 (push (make-Endereco :id 1 :cep "38755-000" :rua "Rua Pedro Alvares Cabral") endereco_list)
 (push (make-Pessoa :nome "Christopher José" :documento "01802346868" :endId 1) pessoa_list)
+
+(push (make-Solicitante :usuario "chriscoy" :isDevedor 0 :documento_pessoa "01802346868") solicitante_list)
 
 (defun cls () (ext:run-shell-command "clear") )
 (cls)
@@ -22,6 +22,11 @@
     (write-line "2. Listar Pessoas")
     (write-line "3. Editar Pessoa")
     (write-line "4. Apagar Pessoa")
+    (write-line "")
+    (write-line "5. Cadastrar Solicitante")
+    (write-line "6. Listar Solicitantes")
+    (write-line "7. Editar Solicitantes")
+    (write-line "8. Apagar Solicitantes")
 
     (write-line "5. Cadastrar Serviço")
     (write-line "6. Cadastrar OS")
@@ -58,6 +63,17 @@
         (apagar_pessoa)
     )
 
+    (if (= opcao 5)
+        (cadastrar_solicitante)
+    )
+
+    (if (= opcao 6)
+        (listar_solicitantes)
+    )
+
+    (if (= opcao 8)
+        (apagar_solicitante)
+    )
 )
 
 
