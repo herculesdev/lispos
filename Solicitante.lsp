@@ -28,9 +28,9 @@
       (setq devedor-lido 0)
     )
 
-    (setq documento (Pessoa-documento_pessoa pessoa))
+    (setq documento (Pessoa-documento pessoa))
 
-    (setq s (make-Solicitante :usuario (write-to-string usuario-lido) :isDevedor (write-to-string devedor-lido) :documento_pessoa documento))
+    (setq s (make-Solicitante :usuario (write-to-string usuario-lido) :isDevedor devedor-lido :documento_pessoa documento))
     (return-from ler_solicitante s)
 )
 
@@ -80,8 +80,6 @@
     (format t "Digite o identificador do registro: ")
     (setq solicitante_id (read))
     (setq solicitante (nth solicitante_id solicitante_list))
-
-    (write solicitante)
     
     (when (not solicitante)
         (write-line "Registro não encontrado")
@@ -114,7 +112,7 @@
 
     (write-line "")
     (format t "Devedor: ")
-    (if (/= (Solicitante-isDevedor solicitante) 0)
+    (if (/=  (Solicitante-isDevedor solicitante) 0)
         (format t "sim")
         (format t "não")
     )
@@ -133,4 +131,65 @@
     (setq solicitante_list (delete solicitante solicitante_list))
 
     (write-line "Solicitante apagado dos registros")
+)
+
+(defun editar_solicitante()
+    (cls)
+    (format t "Digite o identificador do registro: ")
+    (setq solicitante_id (read))
+    (setq solicitante (nth solicitante_id solicitante_list))
+    
+    (when (not solicitante)
+        (write-line "Registro não encontrado")
+        (return-from editar_solicitante 0)
+    )
+
+
+    (setq pessoa nil)
+    (dolist (pes pessoa_list)
+        (if (string= (Solicitante-documento_pessoa solicitante) (Pessoa-documento pes))
+            (setq pessoa pes)
+        )
+    )
+
+    (cls)
+    (write-line "======[SISTEMA OS | APAG. SOLICITANTE]======")
+    (format t (concatenate 'string "Posição: " (write-to-string solicitante_id)))
+    
+    (write-line "")
+    (format t "Nome: ")
+    (format t (Pessoa-nome pessoa))
+
+    (write-line "")
+    (format t "Documento: ")
+    (format t (Pessoa-documento pessoa))
+
+    (write-line "")
+    (format t "Usuário: ")
+    (format t (Solicitante-usuario solicitante))
+
+    (write-line "")
+    (format t "Devedor: ")
+    (if (/=  (Solicitante-isDevedor solicitante) 0)
+        (format t "sim")
+        (format t "não")
+    )
+
+    
+    (write-line "")
+    (format t "Editar (0 = SIM | 1 = NÃO): ")
+    (setq editar (read))
+
+    (when (/= editar 0)
+        (write-line "Saindo...")
+        (write-line "")
+        (return-from editar_solicitante 0)
+    )
+
+    
+    (setq solicitante_lido (ler_solicitante))
+
+    (setf (nth solicitante_id solicitante_list) solicitante_lido)
+
+    (write-line "Solicitante editado com sucesso.")
 )

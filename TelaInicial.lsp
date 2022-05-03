@@ -28,6 +28,12 @@
     (write-line "7. Editar Solicitantes")
     (write-line "8. Apagar Solicitantes")
 
+    (write-line "")
+    (write-line "9. Cadastrar Executante")
+    (write-line "10. Listar Executantes")
+    (write-line "11. Editar Executante")
+    (write-line "12. Apagar Executante")
+
     (write-line "5. Cadastrar Serviço")
     (write-line "6. Cadastrar OS")
 
@@ -71,8 +77,28 @@
         (listar_solicitantes)
     )
 
+    (if (= opcao 7)
+        (editar_solicitante)
+    )
+
     (if (= opcao 8)
         (apagar_solicitante)
+    )
+    
+    (if (= opcao 9)
+        (cadastrar_executante)
+    )
+
+    (if (= opcao 10)
+        (listar_executantes)
+    )
+
+    (if (= opcao 11)
+        (editar_executante)
+    )
+
+    (if (= opcao 12)
+        (apagar_executante)
     )
 )
 

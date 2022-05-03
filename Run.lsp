@@ -3,6 +3,7 @@
   (load "./Endereco.lsp")
   (load "./Pessoa.lsp")
   (load "./Solicitante.lsp")
+  (load "./Executante.lsp")
   (load "./TelaInicial.lsp")
 )
 (load-project)
