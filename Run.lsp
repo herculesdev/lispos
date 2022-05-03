@@ -4,6 +4,7 @@
   (load "./Pessoa.lsp")
   (load "./Solicitante.lsp")
   (load "./Executante.lsp")
+  (load "./OrdemServico.lsp")
   (load "./TelaInicial.lsp")
 )
 (load-project)
