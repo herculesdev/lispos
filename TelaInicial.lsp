@@ -5,6 +5,10 @@
 (push (make-Pessoa :nome "Christopher José" :documento "01802346868" :endId 1) pessoa_list)
 
 (push (make-Solicitante :usuario "chriscoy" :isDevedor 0 :documento_pessoa "01802346868") solicitante_list)
+(push (make-Executante :funcao "mecanico" :isDisponivel 1 :ctps "15615mg" :documento_pessoa "02101848686") executante_list)
+
+(push (make-OrdemServico :numero 15620 :solicitante "01802346868" :executante "02101848686") ordemservico_list)
+
 
 (defun cls () (ext:run-shell-command "clear") )
 (cls)
@@ -109,6 +113,30 @@
     )
 )
 
+(defun menuServico()
+    (write-line "1. Cadastrar Serviço")
+    (write-line "2. Listar Serviços")
+    (write-line "3. Editar Serviço")
+    (write-line "4. Apagar Serviço")
+    (setq opcao2 (read))
+    
+    (if (= opcao2 1)
+        (cadastrar_servico)
+    )
+
+    (if (= opcao2 2)
+        (listar_servicos)
+    )
+
+    (if (= opcao2 3)
+        (editar_servico)
+    )
+
+    (if (= opcao2 4)
+        (apagar_servico)
+    )
+)
+
 (setq opcao -1)
 (loop
     (write-line "======[SISTEMA OS | MENU]======")
@@ -116,6 +144,7 @@
     (write-line "2. Solicitante")
     (write-line "3. Executante")
     (write-line "4. S0")
+    (write-line "5. Serviço")
 
     (write-line "")
     (write-line "Outros: 100. Limpar tela | 200. Sair")
@@ -148,6 +177,9 @@
 
     (if (= opcao 4)
         (menuSO)
+    )
+    (if (= opcao 5)
+        (menuServico)
     )
 )
 

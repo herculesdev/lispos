@@ -15,10 +15,10 @@
 (defun ler_endereco(&optional indice)
 
     (format t "Rua: ")
-    (setq rua-lido (read))
+    (setq rua-lido (read-line))
 
     (format t "Cep: ")
-    (setq cep-lido (read))
+    (setq cep-lido (read-line))
 
     (if indice
         (setq idEnd indice)

@@ -74,6 +74,8 @@
         (format t (Executante-documento_pessoa executante))
         (format t ", Solicitante: ")
         (format t (Solicitante-documento_pessoa solicitante))
+        (format t ", Numero: ")
+        (format t (write-to-string (OrdemServico-numero item)))
 
         ;;mostrar a quantidades de serviços na so
 
@@ -120,6 +122,9 @@
     (write-line "")
     (format t "Solicitante: ")
     (format t (Solicitante-documento_pessoa solicitante))
+
+    (format t ", Numero: ")
+    (format t (write-to-string (OrdemServico-numero item)))
     
     (write-line "")
     (format t "Apagar (0 = SIM | 1 = NÃO): ")

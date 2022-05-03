@@ -20,10 +20,10 @@
     )
 
     (format t "Função: ")
-    (setq funcao-lido (read))
+    (setq funcao-lido (read-line))
 
     (format t "Ctps: ")
-    (setq ctps-lido (read))
+    (setq ctps-lido (read-line))
 
     (format t "Ele está disponivel?(0-SIM / 1-NÃO) ")
     (setq opcao-lido(read))

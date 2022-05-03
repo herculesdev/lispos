@@ -19,7 +19,7 @@
     )
 
     (format t "Usuário: ")
-    (setq usuario-lido (read))
+    (setq usuario-lido (read-line))
 
     (format t "Ele está devendo?(0-SIM / 1-NÃO) ")
     (setq opcao-lido(read))

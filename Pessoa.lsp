@@ -9,9 +9,9 @@
 
 (defun ler_pessoa(&optional indice)
     (format t "Nome: ")
-    (setq nome-lido (read))
+    (setq nome-lido (read-line))
     (format t "Documento: ")
-    (setq documento-lido (read))
+    (setq documento-lido (read-line))
     
     (if indice
         (setq idEnd indice)
